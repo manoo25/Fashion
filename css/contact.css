@@ -1,0 +1,35 @@
+.mycontact{
+    color: var(--text-color);
+}
+.mycontact .secondd{
+    color: var(--second-text);
+}
+.new-container{
+    background-color: var(--card-color);
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 40px;
+}
+.new-container .email-icon{
+    color: var(--main-color);
+}
+.custom-placeholder::placeholder {
+    color: var(--second-text); 
+    opacity: 1;     /* مهم لتفعيل اللون بوضوح */
+  }
+
+/* لون placeholder الافتراضي (اللي هو "Select one...") */
+.gray-placeholder:invalid {
+    color:var(--second-text);
+  }
+  
+  /* ترجع للون الأسود بعد اختيار المستخدم */
+  .gray-placeholder:valid {
+    color: #000;
+  }
+  
+
+ 
+
+
+  

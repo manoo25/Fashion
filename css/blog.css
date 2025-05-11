@@ -1,0 +1,16 @@
+
+.myown-color{
+    color: var(--text-color);
+}
+.colorp{
+    color: #1e266e !important;
+}
+.new-container{
+    background-color: var(--card-color);
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 40px;
+}
+.new-container .email-icon{
+    color: var(--main-color);
+}

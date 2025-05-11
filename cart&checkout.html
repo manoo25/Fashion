@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/global.css" />
+  <link rel="stylesheet" href="./css/home.css" />
+  <link rel="stylesheet" href="./css/cart&checkout.css" />
+</head>
+
+<body class="graySessions  ">
+
+<div id="loader" class="d-flex justify-content-center align-items-center position-fixed fixed-top  " 
+style="background-color:rgba(255, 252, 252, 0.864);z-index: 10000;height: 100vh;width: 100%;">
+<i style="font-size: 60px; color:var(--main-color)" class="fa-solid fa-spinner fa-spin"></i>
+</div>
+<div style="min-height: 50vh;">
+
+
+  <!-- nav Local  -->
+  <nav style="background-color: var(--main-color);" class="navbar navbar-expand-lg  py-3 fixed-top px-3 px-lg-5" id="mainNavbar">
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="./index.html">Trendify</a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#mobileMenu"
+        aria-controls="mobileMenu"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div 
+      style="background-color: transparent;border:none;max-width: 50%;"
+        class="offcanvas offcanvas-start justify-content-between"
+        tabindex="-1"
+        id="mobileMenu"
+        aria-labelledby="mobileMenuLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="mobileMenuLabel"></h5>
+        </div>
+        <div  class="offcanvas-body d-flex justify-content-between">
+          <ul class="navbar-nav me-auto mx-lg-auto mb-2 mb-lg-0">
+            <li class="nav-item ">
+              <a class="nav-link active" aria-current="page" href="./index.html"
+                ><span class="fa-solid fa-house d-lg-none"></span> Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./docs/category.html"><span class="d-lg-none fa-brands fa-shopify"></span> Products</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#services"><span class="d-lg-none fa-solid fa-screwdriver-wrench"></span> Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./docs/AboutUs.html"><span class="d-lg-none fa-solid fa-circle-exclamation"></span> AboutUs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./docs/blog.html"><span class="d-lg-none fa-solid fa-blog"></span> Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./docs/contact.html"><span class="d-lg-none fa-solid fa-phone"></span> ContactUs</a>
+            </li>
+          </ul>
+          <div class="mt-5">
+            <span
+              type="button"
+              class="btn-dotted mt-5 fa-solid fa-arrows-up-to-line d-lg-none"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+              style="transform:rotate(-90deg) "
+            ></span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav mb-2 mb-lg-0 d-none d-lg-flex align-items-lg-center">
+      
+        <li class="nav-item">
+          <span
+            class="nav-link fa-solid fa-magnifying-glass"
+            role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+          ></span>
+        </li> 
+         <li class="nav-item ">
+          <a class="nav-link btn log " id="logandRegBtn" href="./register&login.html"><span class="fa-solid fa-user-plus me-1"></span> Login | Register</a>
+        </li>
+        <li class="nav-item d-none authBtn">
+          <span
+            class="nav-link fa-solid fa-cart-shopping"
+            role="button"
+          ></span>
+        </li>
+
+        <li class="nav-item d-none authBtn position-relative">
+          <span class="nav-link fa-regular fa-user" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></span>
+          <ul style="left:-115px;" class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+            <li ><a id="ViewCPanelId" class="dropdown-item d-flex justify-content-between align-items-center " ><i class="fas fa-user me-1"></i>Profile</a></li>
+           
+            <li><hr class="dropdown-divider"></li>
+            <li><a id="LogOutandClear"  class="dropdown-item d-flex justify-content-between align-items-center" ><i class="fas fa-sign-out-alt me-1"></i>Log Out</a></li>
+        </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- ofcanvas for search icon -->
+  <div class="offcanvas offcanvas-top " tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close closee" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+       <div class="container"> 
+ <div class="row justify-content-center"> 
+  <div class="col-12 position-relative">
+  <div class="srchinp  position-relative " >
+   <div class="d-flex align-items-center">
+    <input class="search w-100 m-auto" type="search" placeholder="Search Products...." aria-label="Search" id="searchInput" >
+     <span class="fa-solid fa-magnifying-glass"></span>
+        </div>
+<!-- list from search input -->
+   <div  id="searchResults" class="search-results-box card mt-2" style="display: none; position: absolute; top: 82%; left: 0; width: 100%; z-index: 1055; max-height: 450px; overflow-y: auto;">
+   <div class="card-body">
+  <div class="row g-2">
+    <div class="trendingnow"  style="border-bottom: 1px solid #e7e7e7;">
+      <h3 class="mb-3 ">Trending now </h3>
+    </div>
+    <!-- trending buttons for suggest -->
+   <ul class="suggestedtopics  ">
+    <div class="row g-2">
+      <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 "> 
+        <li class="bg-light p-2 mx-2 ">
+        <a href="#" class="text-muted"><span class="fa-solid fa-magnifying-glass"></span>MenJacets</a>
+      </li>
+    </div>
+      <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 "> 
+        <li class="bg-light p-2 mx-2">
+          <a href="#" class="text-muted"><span class="fa-solid fa-magnifying-glass"></span>Pullover</a>
+        </li>
+      </div>
+      <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 "> 
+        <li class="bg-light p-2 mx-2">
+          <a href="#" class="text-muted"><span class="fa-solid fa-magnifying-glass"></span>Sweatshirts</a>
+        </li>
+      </div>
+      <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 "> 
+        <li class="bg-light p-2 mx-2">
+          <a href="#" class="text-muted"><span class="fa-solid fa-magnifying-glass"></span>Shirts</a>
+        </li>
+      </div>
+      <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 "> 
+        <li class="bg-light p-2 mx-2">
+          <a href="#" class="text-muted"><span class="fa-solid fa-magnifying-glass"></span>Poloshirts</a>
+        </li>
+      </div>
+    </div>
+   
+    
+   
+   
+   
+   </ul>
+    <div class="catigname ">
+      <h3>Popular products</h3>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+<div class="card" role="button">
+<div class="pic">
+<img src="./imgs/T3.jpg" class="w-100" alt="productpic">
+</div>
+<h6 class="prodname">FSH23ACCR19822TM1 - Olive*White</h6>
+<div class="product-price d-flex">
+<div class="price">
+<del class="oldprice"> 1,499.00LE  </del>  <p class="newprice d-inline"> 449.00LE</p>
+</div>
+</div>
+</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+<div class="card" role="button">
+<div class="pic">
+<img src="./imgs/T4.jpg" class="w-100" alt="productpic">
+</div>
+<h6 class="prodname">FSH23ACCR19822TM1 - Olive*White</h6>
+<div class="product-price d-flex">
+<div class="price">
+<del class="oldprice"> 1,499.00LE  </del>  <p class="newprice d-inline"> 449.00LE</p>
+</div>
+</div>
+</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+<div class="card" role="button">
+<div class="pic">
+<img src="./imgs/T5.jpg" class="w-100" alt="productpic">
+</div>
+<h6 class="prodname">FSH23ACCR19822TM1 - Olive*White</h6>
+<div class="product-price d-flex">
+<div class="price">
+<del class="oldprice"> 1,499.00LE  </del>  <p class="newprice d-inline"> 449.00LE</p>
+</div>
+</div>
+</div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+    <div class="card" role="button">
+<div class="pic">
+<img src="./imgs/T1.jpg" class="w-100" alt="productpic">
+</div>
+<h6 class="prodname">FSH23ACCR19822TM1 - Olive*White</h6>
+<div class="product-price d-flex">
+<div class="price">
+<del class="oldprice"> 1,499.00LE  </del>  <p class="newprice d-inline"> 449.00LE</p>
+</div>
+</div>
+    </div>
+    </div>
+
+    <div class="seeallprod w-100  text-center mt-2">
+     <a href="./category.html" class="text-decoration-none  h3"> VIEW ALL RESULTS</a>
+    </div>
+  </div>
+
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- end nav  -->
+
+  <div id="BodyOfCartPage" class="container-fluid py-5 mt-5 container-lg d-none">
+
+    <div class="row flex-column-reverse flex-md-row  px-2">
+      <!--customer details-->
+      <section  class="container-fluid  customer-details py-5 px-5  col-md-7 d-none">
+        <form action="#" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="customer-name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="customer-name" pattern="^[A-Za-z\s]{2,}$" required>
+            <div class="invalid-feedback">
+              Please enter your name.
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="customer-address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="customer-address" pattern="^\d+\s+[A-Za-z0-9\s.,'-]+$
+            " required>
+            <div class="invalid-feedback">
+              Please enter your address.
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="customerPhone" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="customerPhone" pattern="^01[0,1,2,5][0-9]{8}$" required>
+            <div class="invalid-feedback">
+              Please enter your phone number.
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="NotesOrder" class="form-label">Notes</label>
+           
+<textarea id="NotesOrder" name="Notes" style="height:15vh;" class="form-control"></textarea>
+
+            
+          </div>
+
+         <div class="d-flex justify-content-between pt-2 ">
+          <button id="submit" type="submit" class="btn">
+             <span class="fa-solid fa-spinner fa-spin me-1 d-none">
+
+             </span> Conferm Order</button>
+          <button id="reviwe" type="reset" class="btn"> <span class="fa-solid fa-cart-shopping me-2"></span>Reviwe Cart</button>
+         </div>
+        </form>
+
+        <div id="congratMsg" class="title text-center pt-5 d-none">
+          <p> "congratulation your information has been stored you can place your order"</p>
+        </div>
+      </section><!--end customer details-->
+
+      <!--order details-->
+      <section class=" container-fluid order-details py-5  px-2 col-md-7  d-block container-lg   ">
+        <div class=" w-100 ">
+          <div class="d-flex  px-2">
+            <h1 class="darkBlueText">Cart</h1>
+            <h3 class="mx-2 darkBlueText"> <span id="CountIteminCart"></span> item</h3>
+          </div>
+        <div class="items" id="ProductinCarts">
+
+        </div>
+        </div>
+      </section> <!--order details-->
+
+      <!-- order summary-->
+      <section class="container-fluid py-5   col-md-5 ">
+        <div class="">
+          <div class=" card-body shadow border rounded-4 bg-light p-5 darkBlueText text-center">
+            <!-- <div class="title"> -->
+              <h1 class="card-title darkBlueText pb-5">
+                Order summary
+              </h1>
+            <!-- </div> -->
+            <div class="d-flex justify-content-between ">
+              <p>Price</p>
+              <p><span id="totalReal"></span> Egp</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Discount</p>
+              <p><span id="totalDiscount"></span> Egp</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>shipping</p>
+              <span>free</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+              <p>Total Price</p>
+              <p><span id="totalEndPrice"></span> Egp</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Estimated delivery</p>
+              <p id="DeliveryDete"></p>
+            </div>
+            <!-- <div class="position-relative">
+              <input type="text" placeholder="Coupon Code" class="form-control mt-3" style="height:70px; ">
+              <button class="btn mb-3 mx-3 p-2 position-absolute top-50 end-0 translate-middle-y">Apply</button>
+            </div> -->
+            <a href="#" id="checkout" class="btn w-100 mt-3 p-2 rounded-5" style="display: block;">proced to
+              checkout</a>
+            <!-- <button id="order" class="btn w-100 mt-3 p-2 rounded-5 " style="display: none;">Place Order</button> -->
+          </div>
+
+        </div>
+      </section><!-- end order summary-->
+    </div>
+  </div>
+
+
+
+  <button 
+  id="scrollToTopBtn" 
+  class="btnscroll rounded-circle position-fixed bottom-0 end-0 border-0 fs-3 m-3 p-2" 
+  style="width: 50px; height: 50px; opacity: 1; transition: opacity 0.3s;z-index: 200;"
+  title="Go to top"> <i class="bi bi-arrow-up"></i> 
+</button>
+
+</div>
+
+       <!-- foot from another section -->
+<footer class="footer mt-5 pb-0">
+  <div class="container ">
+    <div class="row "> 
+    
+      <!-- Column 1 -->
+      <div class="col-12 col-md-6 col-lg-6">
+        <h4 class="footer-title">Trendify</h4>
+        <p class="mb-2 me-lg-4">
+         
+Join our newsletter to receive the latest offers, exclusive discounts, early access to new collections, and stay updated on trending products, shopping tips, and feature updates — all tailored just for you.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col-12 col-md-6 col-lg-3 mt-3">
+        <h5 class="footer-title">About Us</h5>
+        <ul class="list-unstyled">
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./category.html">Products</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./AboutUs.html">About Us</a></li>
+          
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      
+<div class="col-12 col-md-6 col-lg-3 ">
+
+  
+  <!-- QR + Store Badges -->
+  <div class="d-flex gap-4 gap-lg-2 ">
+    <img src="./imgs/Qrnew.PNG" alt="QR Code" class="me-sm-3 mb-3 mb-sm-0" style="width: 90px; height: 90px;">
+    
+    <div>
+      <a href="https://manoo25.github.io/Trendify/"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="img-fluid mb-2" style="max-width: 120px;"></a><br>
+      <a href="https://manoo25.github.io/Trendify/"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="img-fluid" style="max-width: 120px;">
+      </a>
+    </div>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="d-flex social-icons  pt-3   align-items-center  ps-lg-0">
+    <a href="https://manoo25.github.io/Trendify/" class="  me-2 me-lg-5"><i class="fab fa-facebook-f fa-lg"></i></a>
+    <a href="https://manoo25.github.io/Trendify/" class=" me-2 me-lg-5"><i class="fab fa-twitter fa-lg"></i></a>
+    <a href="https://manoo25.github.io/Trendify/" class=" me-2 me-lg-5"><i class="fab fa-instagram fa-lg"></i></a>
+    <a href="https://manoo25.github.io/Trendify/" class=" me-2 me-lg-5"><i class="fab fa-linkedin-in fa-lg"></i></a>
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom mt-2 d-flex flex-column flex-md-row justify-content-between text-center text-md-start pb-3">
+      <p class="mb-2 mb-md-0">© 2025 Trendify. All rights reserved.</p>
+      <div>
+        <a href="#" class="me-3">Privacy Policy</a>
+        <a href="#" class="me-3">Terms of Service</a>
+        <a href="#">Cookies Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- end of foot % -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script  src="./js/home.js"></script>
+  <script  src="./js/global-loading.js"></script>
+  <script type="module" src="./js/cart&checkout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
+    
+
+</body>
+
+</html>

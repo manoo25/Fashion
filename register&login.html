@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.5/jquery.validate.min.js"></script> -->
+    <!-- <script src="./js/login.js"></script> -->
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/register&login.css" />
+
+</head>
+
+<body class="graySessions gx-0">
+    <section class="container-fluid  gx-0" style="height: 100vh;">
+        <div class="row col-md-12 justify-content-center gx-0 h-100">
+            <!-- login -->
+            <div class="col-md-6 h-100 p-lg-5 d-block login">
+                <div class="container p-5">
+                    <!-- title -->
+                    <div class="row title">
+                        <h1 class="">Welcome Back!</h1>
+                        <h6 class="form-subtitle">Plese login or sign up to continue in our website</h6>
+                    </div>
+                    <!-- form -->
+                    <form id="loginForm"  class="needs-validation" novalidate>
+                        <div class="form-group position-relative my-3">
+                            <!--email-->
+                            <label for="emailLogin" class="form-label form-title">E-mail</label>
+                            <div class="position-relative form-icon">
+                                <input type="email" class="form-control ps-5" id="emailLogin"
+                                    placeholder="Ahmed@gmail.com" required
+                                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$">
+                                <i class="fas fa-envelope position-absolute start-0 translate-middle-y ms-3"
+                                    style="left: 1.25rem; top: calc(50%);"></i>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <!--password-->
+                        <div class="form-group my-3">
+                            <label for="passwordLogin" class="form-label form-title">Password</label>
+                            <div class="position-relative form-icon">
+                                <input type="password" class="form-control ps-5 pe-5" id="passwordLogin"
+                                    placeholder="•••••••••••" minlength="6"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                                <i class=" fas fa-lock position-absolute start-0 top-50 translate-middle-y ms-3"></i>
+                                <i class="fas fa-eye-slash position-absolute top-50  translate-middle-y me-3 "
+                                    onclick="togglePassword(event)" style="cursor: pointer; right: 15px;"
+                                    data-bs-target="#passwordLogin"></i>
+                                <div class="invalid-feedback">
+                                    invalid password!
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--login btn-->
+                        <div class="row my-3 p-4">
+                            <button id="confirmLogin" type="submit" class="btn btn-form ">
+                                <span class="fa-solid fa-spinner fa-spin me-2 d-none"></span>
+                                Log in
+                               
+                            </button>
+                        </div>
+
+                    </form>
+                    <div class="row text-center form-subtitle">
+                        <p class="d-none">Or continue with</p>
+                        <div class="icons py-2 d-none">
+                            <a href="#" class="text-decoration-none me-3" style="color: #db4437;">
+                                <i class="fab fa-google fa-2x"></i>
+                            </a>
+                            <a href="#" class="text-decoration-none me-3" style="color: #3b5998;">
+                                <i class="fab fa-facebook fa-2x"></i>
+                            </a>
+                            <a href="#" class="text-decoration-none me-3" style="color: #1da1f2;">
+                                <i class="fab fa-twitter fa-2x"></i>
+                            </a>
+
+                        </div>
+                        <p>Don't have an account? <a onclick="emailLogin.value=''" href="#" id="signUupBtn">Sign up</a></p>
+                    </div>
+
+                </div>
+            </div>
+            <!--end login -->
+
+
+            
+            <!-- register -->
+            <div class="col-md-6 h-100 p-lg-5 d-none signUp">
+                <div class="container p-5">
+                    <div class="row title">
+                        <h1 class="">Create a Account</h1>
+                        <h6 class="form-subtitle">Create a new account</h6>
+                    </div>
+
+
+                    <form  id="registerForm" class="needs-validation" novalidate>
+                        <!--name-->
+                        <div class="form-group my-3">
+                            <label for="username" class="form-label form-title">User Name</label>
+                            <div class="position-relative form-icon">
+                                <input type="text" class="form-control ps-5" id="username" placeholder="Ahmed"
+                                    pattern="^[A-Za-z\s]{2,}$" required>
+                                <i
+                                    class="fa-solid fa-user position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                <div class="invalid-feedback">
+                                    Please enter your name.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <!--email-->
+                        <div class="form-group my-3">
+                            <label for="email" class="form-label form-title">E-mail</label>
+                            <div class="position-relative form-icon">
+                                <input type="email" class="form-control ps-5" id="emailRegister"
+                                    placeholder="Ahmed@gmail.com" required>
+                                <i class="fas fa-envelope position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--password-->
+                        <div class="form-group my-3">
+                            <label for="password" class="form-label form-title">Password</label>
+                            <div class="position-relative form-icon">
+                                <input type="password" class="form-control ps-5 pe-5" id="passwordRegister"
+                                    placeholder="••••••••••••" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                                <i class="fas fa-lock position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                <i class="fas fa-eye-slash position-absolute top-50 translate-middle-y me-3 "
+                                    onclick="togglePassword(event)" style="cursor: pointer;  right: 15px;"
+                                    data-bs-target="#passwordRegister"></i>
+                                <div class="invalid-feedback">
+                                    invalid password! Must contain uppercase, lowercase, digit, and be 6+ chars
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- confirm password -->
+                        <div class="form-group my-3">
+                            <label for="confirmPassword" class="form-label form-title">Confirm Password</label>
+                            <div class="position-relative form-icon">
+                                <input type="password" class="form-control ps-5 pe-5" id="confirmPasswordRegister"
+                                    placeholder="••••••••••••" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+
+                                <i class="fas fa-lock position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                <i class="fas fa-eye-slash position-absolute top-50 translate-middle-y me-3 "
+                                    onclick="togglePassword(event)" style="cursor: pointer;  right: 15px;"
+                                    data-bs-target="#confirmPasswordRegister"></i>
+
+                                <div class="invalid-feedback">
+                                    Not Matched
+                                </div>
+                                <div class="valid-feedback">
+                                    Matched, Looks good!
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row my-3 p-4">
+                            <button id="confirmRegister"  type="submit" class="btn btn-form">
+                                <span class="fa-solid fa-spinner fa-spin me-2 d-none"></span>
+                                Sign up</button>
+                        </div>
+                    </form>
+                    <div class="row text-center form-subtitle">
+                        <p class="d-none">Or continue with</p>
+                        <div class="icons py-2 d-none">
+                            <a href="#" class="text-decoration-none me-3" style="color: #db4437;">
+                                <i class="fab fa-google fa-2x"></i>
+                            </a>
+                            <a href="#" class="text-decoration-none me-3" style="color: #3b5998;">
+                                <i class="fab fa-facebook fa-2x"></i>
+                            </a>
+                            <a href="#" class="text-decoration-none me-3" style="color: #1da1f2;">
+                                <i class="fab fa-twitter fa-2x"></i>
+                            </a>
+
+                        </div>
+                        <p>Aready have an account? <a href="#" id="loginBtn">Log in</a></p>
+                    </div>
+
+                </div>
+            </div>
+            <!--end register -->
+
+            <!-- slider -->
+            <div class="col-md-6 d-none d-md-block  gx-0 h-100">
+                <div class="container-fluid  h-100">
+                    <div style="min-height: 40vh;" id="carouselIndicators" class="carousel slide carousel-fade h-100"
+                        data-bs-ride="carousel">
+                        <div class="carousel-indicators carousel-bg">
+                            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner h-100 ">
+                            <div style="min-height: 45vh; ;" class="carousel-item active h-100 w-100"
+                                data-bs-interval="3000">
+                                <img style="min-height: 45vh;" src="./imgs/unsplash_SXck496Sg54.png"
+                                    class="d-block w-100 h-100 " alt="image1">
+                                <div class="carousel-caption text-center">
+                                    <h1 class="fw-bold">Welcome To Trendify</h1>
+                                    <h3 class="login-text">discover the latest trends<br> express your unique style</h3>
+
+                                </div>
+                            </div>
+                            <div style="min-height: 45vh; ;" class="carousel-item h-100 w-100" data-bs-interval="3000">
+                                <img style="min-height: 45vh;" src="./imgs/unsplash_Q-72wa9-7Dg.png"
+                                    class="d-block w-100 h-100 " alt="image2">
+                                <div class="carousel-caption text-center">
+                                    <h1 class="fw-bold">Welcome To Trendify</h1>
+                                    <h3 class="login-text">discover the latest trends<br> express your unique style</h3>
+
+                                </div>
+                            </div>
+                            <div style="min-height: 45vh; ;" class="carousel-item h-100 w-100" data-bs-interval="3000">
+                                <img style="min-height: 45vh;" src="./imgs/unsplash_N2CiCNWba-Y.png"
+                                    class="d-block w-100 h-100 " alt="image2">
+                                <div class="carousel-caption text-center">
+                                    <h1 class="fw-bold">Welcome To Trendify</h1>
+                                    <h3 class="login-text">discover the latest trends<br> express your unique style</h3>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--end slider -->
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-..."crossorigin="anonymous"></script>
+    <script>
+        //TODO: toggle password visibility 
+ function togglePassword(event) {
+    const icon = event.target;
+    if (!icon) return;
+    
+    const inputId = icon.getAttribute("data-bs-target")?.replace("#", "");
+    if (!inputId) return;
+    
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.replace("fa-eye-slash", "fa-eye");
+    } else {
+      input.type = "password";
+      icon.classList.replace("fa-eye", "fa-eye-slash");
+    }
+  }
+    </script>  
+    <script type="module" src="./js/login&Register.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

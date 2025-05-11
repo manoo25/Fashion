@@ -1,0 +1,28 @@
+.darkBlueText ,.darkBlueText p {  
+    color: var(--text-color);
+  font-weight: var(--font-weight-medium);
+}
+.PosPrice{
+  position: relative;
+  left: -5%;
+}
+.card-body img{
+  height: 150px;
+  width: 100px;
+}
+
+.fa-trash{
+  cursor: pointer;
+  color: var(--main-color);
+}
+.fa-trash:hover{
+  color: rgb(173, 12, 12);
+}
+.decrement ,.increment{
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.1rem var(--main-color);
+}

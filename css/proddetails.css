@@ -1,0 +1,367 @@
+body {
+  background-color: #f6f6f6 !important;
+}
+
+.stars {
+  color: yellow;
+}
+.t {
+  color: var(--text-color) !important;
+}
+.secondcolor {
+  color: var(--second-text);
+}
+
+.circ {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-inline: 5px;
+}
+.main {
+  color: var(--main-color);
+}
+.c1 {
+  background-color: #EBE2DF;
+
+}
+.c2 {
+  background-color: #ffffff;
+}
+.c3 {
+  background-color: #c88242;
+}
+.c4 {
+  background-color: #212f39;
+}
+.c5 {
+  background-color: #507ccd;
+}
+.c6 {
+  background-color: #a7b2a3;
+}
+.active1 {
+  transform: scale(1.4);
+  border: 1px solid black;
+}
+.size {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: white !important;
+}
+.bl {
+  border-left: 1px solid #b79c83 !important;
+  border-block: 1px solid #b79c83 !important;
+}
+.br {
+  border-right: 1px solid #b79c83 !important;
+  border-block: 1px solid #b79c83 !important;
+}
+.by {
+  border-block: 1px solid #b79c83 !important;
+  border-right: none;
+  border-left: none;
+  cursor: context-menu !important;
+}
+.bt {
+  background-color: var(--main-color) !important;
+  color: white !important;
+  border: 0.5px solid black !important;
+  border-radius: 5px;
+  width: 100% !important;
+}
+.bt:hover {
+  background-color: var(--second-color) !important;
+}
+.r:hover {
+  color: var(--main-color) !important;
+}
+
+.carousel-img {
+  height: 60vh;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: 60% 60%;
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #bbb;
+  opacity: 1;
+  margin: 0 5px;
+  border: none;
+}
+
+.carousel-indicators .active1 {
+  background-color: #333;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .left.col-6, 
+  .right.col-6 {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  
+  .carousel-img {
+    height: 50vh;
+  }
+  
+  .right {
+    margin-top: 30px;
+  }
+  
+  .sizes {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .colorpallet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .circ {
+    width: 40px;
+    height: 40px;
+    margin-inline: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-img {
+    height: 40vh;
+  }
+  
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .btn-group {
+    width: 100%;
+  }
+  
+  .btn.bt {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-img {
+    height: 35vh;
+  }
+  
+  .right h3 {
+    font-size: 1.5rem;
+  }
+  
+  .right p {
+    font-size: 0.9rem;
+  }
+  
+  .circ {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .size {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+  
+  .btn-group .btn {
+    padding: 5px 10px;
+  }
+}
+
+.card {
+  border: 1px solid var(--main-color) !important;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card img {
+height: 82px ;
+width: 82px;
+margin: auto;
+}
+.star{
+  color: #CCCCCC;
+}
+.prof {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color:#8B5E35 ;
+  background-color: #E8DFD7;
+  text-align: center  ;
+}
+  .main-swiper {
+        width: 100% !important;
+      }
+
+      @media (min-width: 992px) {
+        .main-swiper {
+          width: 85% !important;
+        }
+
+        .thumbs-swiper {
+          display: block !important;
+        }
+      }
+      .main-swiper .swiper-slide {
+        transition: transform 0.3s ease;
+      }
+      .main-swiper .active1-slide {
+        transform: scale(1.125);
+        z-index: 10;
+      }
+      .main-swiper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .main-swiper {
+        position: relative;
+      }
+
+      .main-next,
+      .main-prev {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-swiper:hover .main-next,
+      .main-swiper:hover .main-prev {
+        opacity: 1;
+      }
+
+      .main-next {
+        right: 15px;
+      }
+
+      .main-prev {
+        left: 15px;
+      }
+      .main-prev::after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid #333;
+        border-bottom: 2px solid #333;
+        position: absolute;
+        left: 50%;
+      }
+      .main-next::after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid #333;
+        border-bottom: 2px solid #333;
+        position: absolute;
+        right: 50%;
+      }
+
+      .main-next::after {
+        transform: rotate(-45deg);
+        margin-right: -3px;
+      }
+
+      .main-prev::after {
+        transform: rotate(135deg);
+        margin-left: -3px;
+      }
+      .main-swiper .swiper-button-disabled {
+        opacity: 0.3 !important;
+        cursor: not-allowed;
+      }
+      .thumbs-swiper {
+        height: 400px !important;
+      }
+
+      .thumbs-swiper .swiper-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .thumbs-swiper .swiper-slide {
+        height: auto !important;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+      }
+
+      .thumbs-swiper .swiper-slide-thumb-active1 {
+        opacity: 1;
+        border: 2px solid #8b5e35;
+      }
+
+      .thumbs-swiper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      .accordion-button::after {
+  display: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+.accordion-button:not(.collapsed) .toggle-icon {
+  content: '-';
+}
+
+
+.accordion-collapse.show + hr {
+  display: none;
+}
+/*  */
+
