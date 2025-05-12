@@ -26,3 +26,11 @@
   align-items: center;
   border: solid 0.1rem var(--main-color);
 }
+
+@media (max-width: 768px) {
+.PosPrice{
+  position: relative;
+  left: -14%;
+  top: -30px;
+}
+}
