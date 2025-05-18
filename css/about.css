@@ -1,0 +1,98 @@
+.comment {
+    width: 35%;
+    height: 60vh;
+    background: rgba(255, 255, 255, 0.567);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.38);
+    margin-left: 10px;
+    transform: translateZ(0);
+    will-change: backdrop-filter, transform;
+
+}
+
+@media (max-width: 750px) {
+    .comment {
+        width: 75%;
+    }
+}
+
+@media (min-width: 751px) and (max-width: 920px) {
+    .comment {
+        width: 70%;
+    }
+}
+
+@media (min-width: 921px) and (max-width: 995px) {
+    .comment {
+        width: 55%;
+    }
+}
+
+@media (min-width: 996px) and (max-width: 1200px) {
+    .comment {
+        width: 45%;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+    body {
+        font-size: 16px !important;
+    }
+
+    .frame_img {
+        height: 35vh !important;
+    }
+
+    .iconic-Fashion h1 {
+        font-size: 20px !important;
+        padding: 15px !important;
+        /* font-size: 10px !important; */
+    }
+
+    .line {
+        height: 30vh !important;
+    }
+
+    .testimonial-card {
+        height: auto !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    body {
+        font-size: 14px !important;
+    }
+
+    .frame_img {
+        height: 20vh !important;
+    }
+    .iconic-Fashion h1 {
+        font-size: 13px !important;
+       padding: 15px!important;
+    }
+}
+
+.testimonial-card {
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+
+.graySessions .pic {
+    opacity: 0.8;
+    width: 77%;
+    height: 80vh;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+
+.title p {
+    color: var(--second-text);
+
+}
