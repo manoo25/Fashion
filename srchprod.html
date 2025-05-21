@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="./imgs/IconWeb.png">
+  <title> Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/global.css" />
+  <link rel="stylesheet" href="./css/cart&checkout.css" />
+  <link rel="stylesheet" href="./css/home.css" />
+
+  <style>
+    #filtereddata {
+    margin-top: 80px !important;
+}
+        .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 5px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button.active {
+  background-color: var(--main-color);
+  color: white;
+  border-color: var(--main-color);
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #ddd;
+}
+.see-all-btn {
+  background-color: var(--main-color);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.see-all-btn:hover {
+  background-color: var(--second-color);
+  transform: scale(1.05);
+}
+.navcat {
+  background-color: var(--main-color);
+}
+  </style>
+</head>
+
+<body class="graySessions  ">
+
+
+  <!-- nav Local  -->
+   <div id="loader" class="d-flex justify-content-center align-items-center position-fixed fixed-top  " 
+style="background-color:rgba(255, 252, 252, 0.864);z-index: 10000;height: 100vh;width: 100%;">
+<i style="font-size: 60px; color:var(--main-color)" class="fa-solid fa-spinner fa-spin"></i>
+</div>
+
+<section class="filteredprod">
+    <div class="container ">
+
+              <nav class="navbar navbar-expand-lg  py-3 fixed-top px-3 px-lg-5 navcat" id="mainNavbar">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="./index.html">Trendify</a>
+          
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!--offcanvas for phone screen-->
+          <div style="background-color:transparent var( --second-color);border:none;max-width: 75%;"
+            class="offcanvas offcanvas-start justify-content-between" tabindex="-1" id="mobileMenu"
+            aria-labelledby="mobileMenuLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="mobileMenuLabel"></h5>
+            </div>
+            <div class="offcanvas-body d-flex justify-content-between">
+              <ul class="navbar-nav me-auto mx-lg-auto ps-3 mb-2 mb-lg-0">
+                <li class="nav-item ">
+                  <a class="nav-link active" aria-current="page" href="/index.html"><span
+                      class="fa-solid fa-house d-lg-none"></span> Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./category.html"><span class="d-lg-none fa-brands fa-shopify"></span>
+                    Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/index.html#services "><span class="d-lg-none fa-solid fa-screwdriver-wrench"></span>
+                    Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/AboutUs.html"><span
+                      class="d-lg-none fa-solid fa-circle-exclamation"></span> AboutUs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/blog.html"><span class="d-lg-none fa-solid fa-blog"></span> Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/contact.html"><span class="d-lg-none fa-solid fa-phone"></span>
+                    ContactUs</a>
+                </li>
+                <!--mobile login-->
+                <li class="nav-item log d-block d-lg-none">
+                  <a id="mobilelogandRegBtn" class="nav-link  moblog" href="./register&login.html">
+                    <span class="fa-solid fa-user-plus me-1"></span> Login | Register
+                  </a>
+                </li>
+                <!--mobile profile-->
+                <li class="nav-item authBtn d-none d-block d-lg-none">
+                  <a id="mobileViewCPanelId" class="nav-link">
+                    <i class="fas fa-user me-1"></i>Profile
+                  </a>
+                </li>
+                <!--mobile logout-->
+                <li class="nav-item authBtn d-none d-block d-lg-none">
+                  <a id="mobileLogOutandClear" class="nav-link">
+                    <i class="fa-regular fa-user"></i> Log Out
+                  </a>
+                </li>
+                  <!-- cart Mobile 07/05  -->
+            <li id="CartMobile" class="nav-item d-none authBtn ">
+            <div class="d-block mt-3 mt-md-0 d-md-none">
+                <a href="./cart&checkout.html" class=" position-relative" >
+                <span id="CartNum2" style="width: 21px; height: 21px; color: var(--bg-color); background-color:black; top:-8.2px; right: 1px; " class="badge rounded-2 position-absolute  translate-middle d-flex justify-content-center align-items-center ">
+                
+                </span>
+ 
+                <span class="nav-link fa-solid fa-cart-shopping " role="button"></span>
+              </a>
+            </div>
+            </li>
+            <!-- search mobile  -->
+             <li class="nav-item  d-md-none">
+              <span class="nav-link fa-solid fa-magnifying-glass" role="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasTop"></span>
+            </li>
+              </ul>
+              <!-- offcanvas icon -->
+              <div class="mt-5">
+                <span type="button" class="btn-dotted mt-5 fa-solid fa-arrows-up-to-line d-lg-none"
+                  data-bs-dismiss="offcanvas" aria-label="Close" style="transform:rotate(-90deg) ">
+
+                </span>
+
+              </div>
+            </div>
+          </div>
+
+          <ul class="navbar-nav mb-2 mb-lg-0 d-none d-lg-flex align-items-lg-center">
+
+            <li class="nav-item">
+              <span class="nav-link fa-solid fa-magnifying-glass" role="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasTop"></span>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link btn log d-none" id="logandRegBtn" href="./register&login.html"><span
+                  class="fa-solid fa-user-plus me-1"></span> Login | Register</a>
+            </li>
+            <!-- cart icon 07/05  -->
+            <li class="nav-item d-none authBtn">
+              <a href="./cart&checkout.html" class=" position-relative" >
+                <span id="CartNum" style="width: 21px; height: 21px; color: var(--bg-color); background-color:black; top:-8.2px; right: 1px; " class="badge rounded-2 position-absolute  translate-middle d-flex justify-content-center align-items-center d-none">
+                
+                </span>
+ 
+                <span class="nav-link fa-solid fa-cart-shopping " role="button"></span>
+              </a>
+            </li>
+
+         
+
+            <li class="nav-item d-none authBtn position-relative">
+              <span class="nav-link fa-regular fa-user" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false"></span>
+              <ul style="left:-115px;" class="dropdown-menu  " aria-labelledby="dropdownMenuButton">
+                <li><a id="ViewCPanelId" class="dropdown-item d-flex justify-content-between align-items-center "><i
+                      class="fas fa-user me-1"></i>Profile</a></li>
+
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a id="LogOutandClear" class="dropdown-item d-flex justify-content-between align-items-center"><i
+                      class="fas fa-sign-out-alt me-1"></i>Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+      <div class="offcanvas offcanvas-top " tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close closee" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 position-relative">
+                <div class="srchinp  position-relative ">
+                  <div class="d-flex align-items-center">
+                    <input class="search w-100 m-auto" type="search" placeholder="Search Products...."
+                      aria-label="Search" id="searchInput">
+                    <span class="fa-solid fa-magnifying-glass"></span>
+                  </div>
+                  <!-- list from search input -->
+                  <div id="searchResults" class="search-results-box card mt-2"
+                    style="display: none; position: absolute; top: 82%; left: 0; width: 100%; z-index: 1055; max-height: 450px; overflow-y: auto;">
+                    <div class="card-body">
+                      <div class="row g-2">
+                        <div class="trendingnow" style="border-bottom: 1px solid #e7e7e7;">
+                          <h3 class="mb-3 ">Trending now </h3>
+                        </div>
+                        <!-- trending buttons for suggest -->
+                        <ul class="suggestedtopics  ">
+                          <div class="row g-2">
+                            <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 ">
+                              <li class="bg-light p-2 mx-2 ">
+                                <a href="#" class="text-muted"><span
+                                    class="fa-solid fa-magnifying-glass"></span>MenJacets</a>
+                              </li>
+                            </div>
+                            <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 ">
+                              <li class="bg-light p-2 mx-2">
+                                <a href="#" class="text-muted"><span
+                                    class="fa-solid fa-magnifying-glass"></span>Pullover</a>
+                              </li>
+                            </div>
+                            <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 ">
+                              <li class="bg-light p-2 mx-2">
+                                <a href="#" class="text-muted"><span
+                                    class="fa-solid fa-magnifying-glass"></span>Sweatshirts</a>
+                              </li>
+                            </div>
+                            <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 ">
+                              <li class="bg-light p-2 mx-2">
+                                <a href="#" class="text-muted"><span
+                                    class="fa-solid fa-magnifying-glass"></span>Shirts</a>
+                              </li>
+                            </div>
+                            <div class="col-5 col-md-5 d-flex align-items-center col-lg-2 ">
+                              <li class="bg-light p-2 mx-2">
+                                <a href="#" class="text-muted"><span
+                                    class="fa-solid fa-magnifying-glass"></span>Poloshirts</a>
+                              </li>
+                            </div>
+                          </div>
+                        </ul>
+ <div class="catigname">
+                          <h3>Popular products</h3>
+                        </div>
+                        <div class="row  g-2" id="searchProductsContainer">
+   <div class="col-6 col-md-4 col-lg-3">
+                          <div class="card" role="button" data-id="1" >
+                            <div class="pic" >
+                              <img src="./imgs/products/MT1.jpg" class="w-100" alt="productpic" style="height: 100% !important;">
+                            </div>
+                            <h6 class="prodname">Oversize TShirt</h6>
+                            <div class="product-price d-flex">
+                              <div class="price">
+                                <del class="oldprice"> 800 </del>
+                                <p class="newprice d-inline"> 560L.E</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                          <div class="card" role="button" data-id="28">
+                            <div class="pic">
+                              <img src="./imgs/products/MC12.jpg" class="w-100" alt="productpic" style="height: 100% !important;">
+                            </div>
+                            <h6 class="prodname">LIGHTWEIGHT WATER</h6>
+                            <div class="product-price d-flex">
+                              <div class="price">
+                                <del class="oldprice"></del>
+                                <p class="newprice d-inline"> 5690 L.E</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                          <div class="card" role="button" data-id="16">
+                            <div class="pic">
+                              <img src="./imgs/products/KT14.jpg" class="w-100" alt="productpic" style="height: 100% !important;">
+                            </div>
+                            <h6 class="prodname">TOWELLING  SWEATSHIRT</h6>
+                            <div class="product-price d-flex">
+                              <div class="price">
+                                <del class="oldprice"> 1190 </del>
+                                <p class="newprice d-inline"> 790L.E</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                          <div class="card" role="button" data-id="15">
+                            <div class="pic">
+                              <img src="./imgs/products/WS12.jpg" class="w-100" alt="productpic" style="height: 100% !important;">
+                            </div>
+                            <h6 class="prodname">HIGH HEEL SLIIINGGGBACK</h6>
+                            <div class="product-price d-flex">
+                              <div class="price">
+                                <del class="oldprice"></del>
+                                <p class="newprice d-inline"> 3890L.E</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                       
+                     
+
+                        <div class="seeallprod w-100  text-center mt-2">
+                         <a href="#" class="text-decoration-none  h3"> VIEW ALL RESULTS</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div id="filtereddata" style="min-height: 40vh;" class="row gy-4 px-5 px-md-2 px-lg-0 gx-4 mt-3">
+       
+           
+           </div>
+           <div class="pagination" id="paginationContainer"></div>
+           <div class="allprods my-3 text-center" id="allprods">
+            <button class="see-all-btn"><a href="/category.html" class="text-decoration-none  text-white">See All Products</a></button>
+           </div>
+    </div>
+
+
+
+
+</section>
+
+      <!-- foot from another section -->
+<footer class="footer mt-5 pb-0">
+  <div class="container ">
+    <div class="row "> 
+    
+      <!-- Column 1 -->
+      <div class="col-12 col-md-6 col-lg-6">
+        <h4 class="footer-title">Trendify</h4>
+        <p class="mb-2 me-lg-4">
+         
+Join our newsletter to receive the latest offers, exclusive discounts, early access to new collections, and stay updated on trending products, shopping tips, and feature updates — all tailored just for you.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col-12 col-md-6 col-lg-3 mt-3">
+        <h5 class="footer-title">About Us</h5>
+        <ul class="list-unstyled">
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./category.html">Products</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./AboutUs.html">About Us</a></li>
+          
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      
+<div class="col-12 col-md-6 col-lg-3 ">
+
+  
+  <!-- QR + Store Badges -->
+  <div class="d-flex gap-4 gap-lg-2 ">
+    <img src="./imgs/Qrnew.png" alt="QR Code" class="me-sm-3 mb-3 mb-sm-0" style="width: 90px; height: 90px;">
+    
+    <div>
+      <a href="https://trendify-umber.vercel.app/register&login.html"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="img-fluid mb-2" style="max-width: 120px;"></a><br>
+      <a href="https://trendify-umber.vercel.app/register&login.html"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="img-fluid" style="max-width: 120px;">
+      </a>
+    </div>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="d-flex social-icons  pt-3   align-items-center  ps-lg-0">
+    <a href="https://trendify-umber.vercel.app/register&login.html" class="  me-2 me-lg-5"><i class="fab fa-facebook-f fa-lg"></i></a>
+    <a href="https://trendify-umber.vercel.app/register&login.html" class=" me-2 me-lg-5"><i class="fab fa-twitter fa-lg"></i></a>
+    <a href="https://trendify-umber.vercel.app/register&login.html" class=" me-2 me-lg-5"><i class="fab fa-instagram fa-lg"></i></a>
+    <a href="https://trendify-umber.vercel.app/register&login.html" class=" me-2 me-lg-5"><i class="fab fa-linkedin-in fa-lg"></i></a>
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom mt-2 d-flex flex-column flex-md-row justify-content-between text-center text-md-start pb-3">
+      <p class="mb-2 mb-md-0">© 2025 Trendify. All rights reserved.</p>
+      <div>
+        <a href="#" class="me-3">Privacy Policy</a>
+        <a href="#" class="me-3">Terms of Service</a>
+        <a href="#">Cookies Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- end of foot % -->
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- <script  src="./js/home.js"></script> -->
+  <!-- <script type="module" src="./js/cart&checkout.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/home.js"></script>
+  <script src="js/global-loading.js"></script>
+  <script type="module" src="js/srchprod.js"></script>
+      <script type="module" src="./js/getCartNum.js"></script>
+   
+    
+
+</body>
+
+</html>
