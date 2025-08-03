@@ -2,10 +2,10 @@
 
 This is a responsive and modern eCommerce website for a clothing store, built using **HTML**, **CSS**, **JavaScript**, and enhanced with **Bootstrap**, **jQuery**, **Font Awesome**, **SweetAlert**, **Splide.js**, and custom **animations**. It provides an engaging user experience across all devices.
 
-## 🔗 Live Demo
+## 🌟 Live Demo
 
-https://trendify-umber.vercel.app/index.html
-
+🚀 [![Live Demo](https://img.shields.io/badge/Demo-Live-blue?logo=vercel)](https://fresh-cart-rho-pink.vercel.app/)
+Explore the full functionality of the app directly in your browser.
 ---
 
 ## 🚀 Features
